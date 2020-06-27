@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Vlog.Models;
 
 namespace Vlog
 {
@@ -20,14 +22,17 @@ namespace Vlog
     {
       var connectionString = $"Data Source={Configuration["Database:Docker:Server"]},{Configuration["Database:Docker:Port"]};Initial Catalog={Configuration["Database:Docker:DBName"]};User ID={Configuration["Database:Docker:User"]};Password={Configuration["Database:Docker:Password"]};";
       
-      services.AddDbContext<MeongDBContext>
+      services.AddDbContext<VlogDBContext>
         (opt => opt.UseSqlServer(connectionString));
       services.AddControllersWithViews();
+      services.AddScoped<IContactRepository, SQLContactRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+      DbPrepare.PrepPopulation(app);
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
@@ -36,6 +41,7 @@ namespace Vlog
       {
         app.UseExceptionHandler("/Home/Error");
       }
+
       app.UseStaticFiles();
 
       app.UseRouting();
