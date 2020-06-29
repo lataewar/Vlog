@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Vlog.Models.Types
 {
-  public class LogisticService
+  public class RajaOngkirCity
   {
     public int Id { get; set; }
+    public int ROCityId { get; set; }
+    public int ROProvinceId { get; set; }
     public string Name { get; set; }
-    public string Description { get; set; }
-    public int LogisticFareIdentityId { get; set; }
-    // public LogisticFareIdentity LogisticFareIdentity { get; set; }
+    public int PostalCode { get; set; }
   }
 }

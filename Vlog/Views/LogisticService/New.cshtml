@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-group ">
+                <a href="#" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action">Paket</a>
+                <a href="#" class="list-group-item list-group-item-action active">Layanan Logistik</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Buat Layanan Logistik Baru</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="service_name" class="col-4 col-form-label">Nama Layanan</label>
+                                    <div class="col-8">
+                                        <input id="service_name" name="service_name" placeholder="Nama layanan" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="service_desc" class="col-4 col-form-label">Deskripsi Layanan</label>
+                                    <div class="col-8">
+                                        <textarea id="service_desc" name="service_desct" cols="40" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="unit" class="col-4 col-form-label">Satuan Hitung</label>
+                                    <div class="col-8">
+                                        <select id="unit" name="unit" class="custom-select">
+                                            <option value="admin">Berat (gr)</option>
+                                            <option value="admin">Dimensi (m2)</option>
+                                            <option value="admin">Unit</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="use_rajaongkir" class="col-4 col-form-label">&nbsp;</label>
+                                    <div class="col-8">
+                                        <div class="checkbox checkbox-primary">
+                                            <input id="use_rajaongkir" name="use_rajaongkir" class="styled" type="checkbox" checked>
+                                            <label for="use_rajaongkir">
+                                                <span style="font-size: 14px;">RajaOngkir sebagai harga dasar?</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="margin" class="col-4 col-form-label">Margin</label>
+                                    <div class="col-8">
+                                        <input id="margin" name="margin" placeholder="0" class="form-control here" required="required" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,10 +6,12 @@
     public LogisticFareIdentity LogisticFareIdentity { get; set; }
     public LogisticUnitEnum LogisticUnit { get; set; }
     public decimal Nominal { get; set; }
-    public int RuralFromId { get; set; }
-    public Rural RuralFrom { get; set; }
+    public int MinimumEstimateDay { get; set; }
+    public int MaximumEstimateDay { get; set; }
+    public int RegencyFromId { get; set; }
+    // public Regency RegencyFrom { get; set; }
+    public int RegencyToId { get; set; }
+    // public Regency RegencyTo { get; set; }
 
-    public int RuralToId { get; set; }
-    public Rural RuralTo { get; set; }
   }
 }

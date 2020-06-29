@@ -1,0 +1,202 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-group ">
+                <a href="#" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action active">Paket</a>
+                <a href="#" class="list-group-item list-group-item-action">Layanan Logistik</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Buat Kiriman Paket Baru</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <h5>Pilih Layanan Kirim</h5>
+                                <div class="form-group row">
+                                    <label for="unit_enum" class="col-4 col-form-label">Satuan Hitung</label>
+                                    <div class="col-8">
+                                        <select id="unit_enum" name="unit_enum" class="custom-select">
+                                            <option value="admin">Berat (gram)</option>
+                                            <option value="admin">Dimensi (m2)</option>
+                                            <option value="admin">Unit</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="unit" class="col-4 col-form-label">Jumlah satuan</label>
+                                    <div class="col-8">
+                                        <input id="unit" name="unit" placeholder="Unit" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="logistic_service" class="col-4 col-form-label">Layanan Kirim</label>
+                                    <div class="col-8">
+                                        <select id="logistic_service" name="logistic_service" class="custom-select">
+                                            <option>--Pilih Layanan--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                    </div>
+                                </div>
+
+                                <h5>Asal</h5>
+                                <div class="form-group row">
+                                    <label for="name_from" class="col-4 col-form-label">Nama Pengirim</label>
+                                    <div class="col-8">
+                                        <input id="name_from" name="name_from" placeholder="Nama pengirim" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="address_from" class="col-4 col-form-label">Alamat</label>
+                                    <div class="col-8">
+                                        <textarea id="address_from" name="address_from" cols="40" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="select" class="col-4 col-form-label">Negara</label>
+                                    <div class="col-8">
+                                        <select id="select" name="select" class="custom-select">
+                                            <option value="admin">Indonesia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="province_from" class="col-4 col-form-label">Provinsi</label>
+                                    <div class="col-8">
+                                        <select id="province_from" name="province_from" class="custom-select">
+                                            <option>--Pilih Provinsi--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="regency_from" class="col-4 col-form-label">Kabupaten/Kota</label>
+                                    <div class="col-8">
+                                        <select id="regency_from" name="regency_from" class="custom-select">
+                                            <option>--Pilih Kabupaten/Kota--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="text" class="col-4 col-form-label">Kelurahan/Desa</label>
+                                    <div class="col-8">
+                                        <select id="rural_from" name="rural_from" class="custom-select">
+                                            <option>--Pilih Kelurahan/Desa--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">No Telp.</label>
+                                    <div class="col-8">
+                                        <input id="contact_from" name="contact_from" placeholder="+62---" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                    </div>
+                                </div>
+
+                                <h5>Tujuan</h5>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">Nama Penerima</label>
+                                    <div class="col-8">
+                                        <input id="name_to" name="name_to" placeholder="Nama penerima" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="address_to" class="col-4 col-form-label">Alamat</label>
+                                    <div class="col-8">
+                                        <textarea id="address_to" name="address_to" cols="40" rows="4" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="select" class="col-4 col-form-label">Negara</label>
+                                    <div class="col-8">
+                                        <select id="select" name="select" class="custom-select">
+                                            <option value="admin">Indonesia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="province_to" class="col-4 col-form-label">Provinsi</label>
+                                    <div class="col-8">
+                                        <select id="province_to" name="province_to" class="custom-select">
+                                            <option>--Pilih Provinsi--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="regency_to" class="col-4 col-form-label">Kabupaten/Kota</label>
+                                    <div class="col-8">
+                                        <select id="regency_to" name="regency_to" class="custom-select">
+                                            <option>--Pilih Kabupaten/Kota--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="text" class="col-4 col-form-label">Kelurahan/Desa</label>
+                                    <div class="col-8">
+                                        <select id="rural_to" name="rural_to" class="custom-select">
+                                            <option>--Pilih Kelurahan/Desa--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-4 col-form-label">No Telp.</label>
+                                    <div class="col-8">
+                                        <input id="contact_to" name="contact_to" placeholder="+62---" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                    </div>
+                                </div>
+                                <h5>Pilih Layanan Tambahan</h5>
+                                <div class="form-group row">
+                                    <label for="select" class="col-4 col-form-label">Daftar Layanan Tambahan</label>
+                                    <div class="col-8">
+                                        <select id="other_service" name="other_service" class="custom-select">
+                                            <option value="admin">Bingkai kayu</option>
+                                            <option value="admin">Bubble Wrap</option>
+                                            <option value="admin">Fragile Treatment</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
+                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Vlog.Models;
+using Vlog.Models.Interfaces;
 using Vlog.Models.Repositories;
 
 namespace Vlog
@@ -25,10 +26,24 @@ namespace Vlog
       
       services.AddDbContext<VlogDBContext>
         (opt => opt.UseSqlServer(connectionString));
+
       services.AddControllersWithViews();
-      services.AddScoped<IContactRepository, SQLContactRepository>();
+
+      services.AddScoped<IAddressRepository, SQLAddressRepository>();
       services.AddScoped<ICompanyRepository, SQLCompanyRepository>();
+      services.AddScoped<IContactRepository, SQLContactRepository>();
+      services.AddScoped<ICountryRepository, SQLCountryRepository>();
+      services.AddScoped<ILogisticFareIdentityRepository, SQLLogisticFareIdentityRepository>();
+      services.AddScoped<ILogisticFareNominalRepository, SQLLogisticFareNominalRepository>();
+      services.AddScoped<ILogisticOtherServiceRepository, SQLLogisticOtherServiceRepository>();
+      services.AddScoped<ILogisticOtherServiceFareRepository, SQLLogisticOtherServiceFareRepository>();
+      services.AddScoped<ILogisticPacketRepository, SQLLogisticPacketRepository>();
+      services.AddScoped<ILogisticServiceRepository, SQLLogisticServiceRepository>();
+      services.AddScoped<IProvinceRepository, SQLProvinceRepository>();
+      services.AddScoped<IRegencyRepository, SQLRegencyRepository>();
+      services.AddScoped<IRuralRepository, SQLRuralRepository>();
       services.AddScoped<IUserRepository, SQLUserRepository>();
+      services.AddScoped<IUserRoleRepository, SQLUserRoleRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

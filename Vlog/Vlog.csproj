@@ -6,16 +6,29 @@
 
   <ItemGroup>
     <None Remove="Models\DbPrepare.cs~RFda4d9e.TMP" />
+    <None Remove="Models\Interfaces\ILogisticFareIdentityRepository.cs~RF86426c.TMP" />
+    <None Remove="Models\Interfaces\ILogisticOtherServiceFareRepository.cs~RF8d57a7.TMP" />
+    <None Remove="Models\Interfaces\ILogisticOtherServiceRepository.cs~RF8b6c33.TMP" />
+    <None Remove="Models\Types\Address.cs~RF73710a.TMP" />
     <None Remove="Models\Types\LogisticFareNominal.cs~RF4961619.TMP" />
     <None Remove="Models\Types\LogisticOtherServiceFare.cs~RF4a67468.TMP" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\API\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
