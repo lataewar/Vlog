@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Vlog.Models;
+using Vlog.Models.Repositories;
 
 namespace Vlog
 {
@@ -26,6 +27,8 @@ namespace Vlog
         (opt => opt.UseSqlServer(connectionString));
       services.AddControllersWithViews();
       services.AddScoped<IContactRepository, SQLContactRepository>();
+      services.AddScoped<ICompanyRepository, SQLCompanyRepository>();
+      services.AddScoped<IUserRepository, SQLUserRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

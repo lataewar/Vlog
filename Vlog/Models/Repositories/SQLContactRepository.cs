@@ -46,7 +46,7 @@ namespace Vlog.Models
 
     public Contact Update(Contact contactChanges)
     {
-      _context.Entry(contactChanges).State = EntityState.Modified;
+      _context. Entry(contactChanges).State = EntityState.Modified;
       _context.SaveChanges();
 
       return contactChanges;

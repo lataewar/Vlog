@@ -11,6 +11,6 @@ namespace Vlog.Models
     IEnumerable<Company> GetCompanies();
     Company Add(Company company);
     Company Update(Company companyChanges);
-    Company Delete(Company company);
+    Company Delete(int id);
   }
 }

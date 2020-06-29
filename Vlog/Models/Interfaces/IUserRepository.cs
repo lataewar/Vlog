@@ -11,6 +11,6 @@ namespace Vlog.Models
     IEnumerable<User> GetUsers();
     User Add(User user);
     User Update(User userChanges);
-    User Delete(User user);
+    User Delete(int id);
   }
 }

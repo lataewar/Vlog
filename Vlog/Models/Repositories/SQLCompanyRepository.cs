@@ -1,35 +1,55 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Vlog.Models
 {
   public class SQLCompanyRepository : ICompanyRepository
   {
-    public Company Add(Company company)
+    private readonly VlogDBContext _context;
+
+    public SQLCompanyRepository(VlogDBContext context)
     {
-      throw new NotImplementedException();
+      _context = context;
     }
 
-    public Company Delete(Company company)
+    public Company Add(Company company)
     {
-      throw new NotImplementedException();
+      _context.CompanyItems.Add(company);
+      _context.SaveChanges();
+
+      return company;
+    }
+
+    public Company Delete(int id)
+    {
+      Company company = _context.CompanyItems.Find(id);
+
+      if (company != null)
+      {
+        _context.CompanyItems.Remove(company);
+        _context.SaveChanges();
+      }
+
+      return company;
     }
 
     public IEnumerable<Company> GetCompanies()
     {
-      throw new NotImplementedException();
+      return _context.CompanyItems;
     }
 
     public Company GetCompany(int id)
     {
-      throw new NotImplementedException();
+      return _context.CompanyItems.Find( id );
     }
 
     public Company Update(Company companyChanges)
     {
-      throw new NotImplementedException();
+      _context.Entry(companyChanges).State = EntityState.Modified;
+      _context.SaveChanges();
+
+      return companyChanges;
     }
   }
 }

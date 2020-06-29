@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,29 +8,48 @@ namespace Vlog.Models.Repositories
 {
   public class SQLUserRepository : IUserRepository
   {
+    private readonly VlogDBContext _context;
+    public SQLUserRepository(VlogDBContext context)
+    {
+      _context = context;
+    }
     public User Add(User user)
     {
-      throw new NotImplementedException();
+      _context.UserItems.Add(user);
+      _context.SaveChanges();
+
+      return user;
     }
 
-    public User Delete(User user)
+    public User Delete(int id)
     {
-      throw new NotImplementedException();
+      User user = _context.UserItems.Find(id);
+
+      if (user != null)
+      {
+        _context.UserItems.Remove(user);
+        _context.SaveChanges();
+      }
+
+      return user;
     }
 
     public User GetUser(int id)
     {
-      throw new NotImplementedException();
+      return _context.UserItems.Find(id);
     }
 
     public IEnumerable<User> GetUsers()
     {
-      throw new NotImplementedException();
+      return _context.UserItems;
     }
 
     public User Update(User userChanges)
     {
-      throw new NotImplementedException();
+      _context.Entry(userChanges).State = EntityState.Modified;
+      _context.SaveChanges();
+
+      return userChanges;
     }
   }
 }

@@ -8,5 +8,6 @@ namespace Vlog.Models
     public string LoginName { get; set; }
     public string FullName { get; set; }
     public DateTime CreatedDateTime { get; set; }
+    public string Password { get; set; }
   }
 }

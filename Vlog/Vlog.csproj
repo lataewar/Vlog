@@ -6,10 +6,16 @@
 
   <ItemGroup>
     <None Remove="Models\DbPrepare.cs~RFda4d9e.TMP" />
+    <None Remove="Models\Types\LogisticFareNominal.cs~RF4961619.TMP" />
+    <None Remove="Models\Types\LogisticOtherServiceFare.cs~RF4a67468.TMP" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\API\" />
   </ItemGroup>
 
 </Project>
