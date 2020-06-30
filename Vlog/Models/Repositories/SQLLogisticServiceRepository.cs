@@ -49,6 +49,13 @@ namespace Vlog.Models.Repositories
 
     public LogisticService Update(LogisticService logisticServiceChanges)
     {
+      var local = _context.Set<LogisticService>().Local.FirstOrDefault(entry => entry.Id.Equals(logisticServiceChanges.Id));
+      
+      if (local != null)
+      {
+        _context.Entry(local).State = EntityState.Detached;
+      }
+
       _context.Entry(logisticServiceChanges).State = EntityState.Modified;
       _context.SaveChanges();
 

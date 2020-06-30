@@ -16,5 +16,10 @@ namespace Vlog.Controllers.Web
     {
       return View();
     }
+
+    public IActionResult Edit()
+    {
+      return View();
+    }
   }
 }

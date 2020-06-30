@@ -2,6 +2,177 @@
     ViewData["Title"] = "Layanan Logistik";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Layanan Logistik</h1>
+<style>
+    .border-card {
+        background: #fff;
+        margin-bottom: 17px;
+        display: flex;
+        align-items: center;
+        font-family: "Roboto";
+        font-size: 14px;
+        padding: 12px 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid #eaeaea;
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
+        transition: all 0.25s ease;
+    }
+
+        .border-card:hover {
+            -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1), 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .border-card.over {
+            background: rgba(70, 222, 151, 0.15);
+            padding-top: 24px;
+            padding-bottom: 24px;
+            border: 2px solid #47DE97;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0), 0 5px 10px 0 rgba(0, 0, 0, 0);
+        }
+
+            .border-card.over .card-type-icon {
+                color: #47DE97 !important;
+            }
+
+            .border-card.over p {
+                color: #47DE97 !important;
+            }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        transition: all 0.25s ease;
+    }
+
+    .min-gap {
+        flex: 0 0 40px;
+    }
+
+    .card-type-icon {
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 16px;
+        font-weight: 400;
+        color: #323232;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 14px;
+        transition: all 0.25s ease;
+    }
+
+        .card-type-icon.with-border {
+            color: #aeaeae;
+            border: 1px solid #eaeaea;
+        }
+
+        .card-type-icon i {
+            line-height: 40px;
+        }
+
+    .label-group {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+        .label-group.fixed {
+            flex-shrink: 0;
+        }
+
+        .label-group p {
+            margin: 0px;
+            line-height: 21px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+            .label-group p.title {
+                color: #323232;
+                font-weight: 500;
+            }
+
+                .label-group p.title.cta {
+                    text-transform: uppercase;
+                }
+
+            .label-group p.caption {
+                font-weight: 400;
+                color: #aeaeae;
+            }
+
+    .end-icon {
+        margin-left: 16px;
+    }
+</style>
+
+<h4>Daftar Layanan Logistik</h4>
+<hr />
+<button id="newBtn" type="button" class="btn btn-outline-primary">+ Layanan Baru</button>
+<div class="clear" style="margin-bottom: 10px"></div>
+<div id="result">
 </div>
+
+<script>
+    var editLogistService = function (id) {
+        window.location.href = `/logisticservice/edit/${id}`
+    }
+
+    url = "/api/logisticservice"
+
+    var jqxhr = $.ajax(url)
+        .done(function (msg) {
+            console.log("success");
+            console.log(msg);
+            createResultEl(msg);
+        })
+        .fail(function () {
+            alert("error");
+        })
+    
+
+    document.getElementById("newBtn").onclick = function () {
+        window.location.href = "/logisticservice/new"
+    }
+
+    var createResultEl = function (result) {
+        var innerHtml = "";
+
+        for (var i = 0; i < result.length; i++) {
+            innerHtml += `<div class="border-card" id="card-list">
+                <div class="card-type-icon with-border">${i + 1}</div>
+                <div class="content-wrapper" onclick="editLogistService(${result[i].id});">
+                    <div class="label-group fixed">
+                        <p class="title">${result[i].name}</p>
+                        <p class="caption">Nama Layanan</p>
+                    </div>
+                    <div class="min-gap"></div>
+                    <div class="label-group">
+                        <p class="title">${ formatRupiah(result[i].roMargin)}</p>
+                        <p class="caption">Margin dari Raja Ongkir</p>
+                    </div>
+                    <div class="min-gap"></div>
+                    <div class="label-group">
+                        <p class="title">${result[i].description}</p>
+                        <p class="caption">Deskripsi</p>
+                    </div>
+                    </a>
+                </div>
+                <button type="button" class="btn btn-outline-danger">Hapus</button>
+            </div>`;
+        }
+
+        if (result.length == 0) {
+            innerHtml = `<div class="border-card">Tidak ada layanan yang dibuat.</div>`
+        }
+
+        document.getElementById("result").innerHTML = innerHtml;
+    }
+</script>

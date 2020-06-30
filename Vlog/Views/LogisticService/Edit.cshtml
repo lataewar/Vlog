@@ -65,7 +65,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button id="submitBtn" name="submit" type="button" class="btn btn-primary">Selesai</button>
+                                        <button id="editBtn" name="submit" type="button" class="btn btn-primary">Selesai</button>
+                                        <button id="deleteBtn" name="submit" type="button" class="btn btn-light">Hapus</button>
                                         <button id="cancelBtn" name="submit" type="button" class="btn btn-light">Batal</button>
                                     </div>
                                 </div>
@@ -80,13 +81,38 @@
 </div>
 
 <script>
-    var serviceNameEl = document.getElementById("service_name");
-    var descEl = document.getElementById("service_desc");
-    var unitEl = document.getElementById("unit");
-    var roCheckEl = document.getElementById("user_rajaongkir");
-    var marginEl = document.getElementById("margin");
+    loadForm = function (data) {
+        document.getElementById("service_name").value = data.name
+        document.getElementById("service_desc").value = data.description
+        document.getElementById("margin").value = data.roMargin
+    }
 
-    var clearForm = function () {
+    split_ = window.location.href.split("/")
+    id = parseInt(split_[split_.length - 1])
+
+    url = `/api/logisticservice/${id}`
+
+    reload = function () {
+        $.ajax(url)
+            .done(function (msg) {
+                console.log("success");
+                console.log(msg);
+                loadForm(msg);
+            })
+            .fail(function () {
+                alert("error");
+            })
+    }
+
+    reload()
+
+    serviceNameEl = document.getElementById("service_name");
+    descEl = document.getElementById("service_desc");
+    unitEl = document.getElementById("unit");
+    roCheckEl = document.getElementById("user_rajaongkir");
+    marginEl = document.getElementById("margin");
+
+    clearForm = function () {
         serviceNameEl.value = "";
         descEl.value = "";
         unitEl.selectedIndex = 0;
@@ -98,27 +124,50 @@
         window.location.href = `/logisticservice`
     }
 
-    url = "/api/logisticservice"
-
-    document.getElementById("submitBtn").onclick = function () {
+    document.getElementById("editBtn").onclick = function () {
         var jsonData = JSON.stringify({
+            "Id": parseFloat(id),
             "name": serviceNameEl.value,
             "description": descEl.value,
             "roMargin": parseFloat(marginEl.value)
         });
 
         $.ajax({
-            type: "POST",
+            type: "PUT",
             contentType: "application/json",
             url: url,
             data: jsonData,
             success: function (data) {
                 alert("success");
                 clearForm();
+                reload();
             },
             failure: function (errMsg) {
                 alert(errMsg);
             }
         });
     };
+
+    document.getElementById("deleteBtn").onclick = function () {
+        var r = confirm("Apakah Anda yakin ingin menghapus layanan ini?");
+
+        if (r == true) {
+            $.ajax({
+                type: "DELETE",
+                contentType: "application/json",
+                url: url,
+                success: function (data) {
+                    alert("success");
+                    clearForm();
+                    window.location.href = `/logisticservice`
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
+            });
+        } else {
+            
+        }
+    }
+
 </script>
