@@ -36,12 +36,12 @@ namespace Vlog.Models.Repositories
       return userRole;
     }
 
-    public UserRole GetUserRole(int id)
+    public UserRole Get(int id)
     {
       return _context.UserRoleItems.Find(id);
     }
 
-    public IEnumerable<UserRole> GetUserRoles()
+    public IEnumerable<UserRole> Get()
     {
       return _context.UserRoleItems;
     }

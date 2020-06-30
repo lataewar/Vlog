@@ -34,12 +34,12 @@ namespace Vlog.Models.Repositories
       return logisticPacket;
     }
 
-    public LogisticPacket GetLogisticPacket(int id)
+    public LogisticPacket Get(int id)
     {
       return _context.LogisticPacketItems.Find(id);
     }
 
-    public IEnumerable<LogisticPacket> GetLogisticPackets()
+    public IEnumerable<LogisticPacket> Get()
     {
       return _context.LogisticPacketItems;
     }

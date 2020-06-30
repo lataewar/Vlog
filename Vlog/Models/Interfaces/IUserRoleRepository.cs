@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface IUserRoleRepository
   {
-    UserRole GetUserRole(int id);
-    IEnumerable<UserRole> GetUserRoles();
+    UserRole Get(int id);
+    IEnumerable<UserRole> Get();
     UserRole Add(UserRole userRole);
     UserRole Update(UserRole userRoleChanges);
     UserRole Delete(int id);

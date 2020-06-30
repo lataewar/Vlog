@@ -12,12 +12,13 @@ namespace Vlog
 {
   public class Startup
   {
+    public IConfiguration Configuration { get; set; }
+    public static IConfiguration StaticConfiguration { get; private set; }
     public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
+      StaticConfiguration = configuration;
     }
-
-    public IConfiguration Configuration { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -34,7 +35,7 @@ namespace Vlog
       services.AddScoped<IContactRepository, SQLContactRepository>();
       services.AddScoped<ICountryRepository, SQLCountryRepository>();
       services.AddScoped<ILogisticFareIdentityRepository, SQLLogisticFareIdentityRepository>();
-      services.AddScoped<ILogisticFareNominalRepository, SQLLogisticFareNominalRepository>();
+      services.AddScoped<ILogisticSeviceFareRepository, SQLLogisticServiceFareRepository>();
       services.AddScoped<ILogisticOtherServiceRepository, SQLLogisticOtherServiceRepository>();
       services.AddScoped<ILogisticOtherServiceFareRepository, SQLLogisticOtherServiceFareRepository>();
       services.AddScoped<ILogisticPacketRepository, SQLLogisticPacketRepository>();
@@ -44,6 +45,8 @@ namespace Vlog
       services.AddScoped<IRuralRepository, SQLRuralRepository>();
       services.AddScoped<IUserRepository, SQLUserRepository>();
       services.AddScoped<IUserRoleRepository, SQLUserRoleRepository>();
+      services.AddScoped<IRajaOngkirCityRepository, SQLRajaOngkirCityRepository>();
+      services.AddScoped<IRajaOngkirProvinceRepository, SQLRajaOngkirProvinceRepository>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface IProvinceRepository
   {
-    Province GetProvince(int id);
-    IEnumerable<Province> GetProvinces();
+    Province Get(int id);
+    IEnumerable<Province> Get();
     Province Add(Province province);
     Province Update(Province provinceChanges);
     Province Delete(int id);

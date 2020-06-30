@@ -34,12 +34,12 @@ namespace Vlog.Models
       return company;
     }
 
-    public IEnumerable<Company> GetCompanies()
+    public IEnumerable<Company> Get()
     {
       return _context.CompanyItems;
     }
 
-    public Company GetCompany(int id)
+    public Company Get(int id)
     {
       return _context.CompanyItems.Find( id );
     }

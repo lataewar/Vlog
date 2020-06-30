@@ -34,12 +34,12 @@ namespace Vlog.Models
       return contact;
     }
 
-    public Contact GetContact(int id)
+    public Contact Get(int id)
     {
       return _context.ContactItems.Find(id);
     }
 
-    public IEnumerable<Contact> GetContacts()
+    public IEnumerable<Contact> Get()
     {
       return _context.ContactItems;
     }

@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface ILogisticFareIdentityRepository
   {
-    LogisticFareIdentity GetLogisticFareIdentity(int id);
-    IEnumerable<LogisticFareIdentity> GetLogisticFareIdentities();
+    LogisticFareIdentity Get(int id);
+    IEnumerable<LogisticFareIdentity> Get();
     LogisticFareIdentity Add(LogisticFareIdentity logisticFareIdentity);
     LogisticFareIdentity Update(LogisticFareIdentity logisticFareIdentityChanges);
     LogisticFareIdentity Delete(int id);

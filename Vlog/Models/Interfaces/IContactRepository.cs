@@ -7,8 +7,8 @@ namespace Vlog.Models
 {
   public interface IContactRepository
   {
-    Contact GetContact(int id);
-    IEnumerable<Contact> GetContacts();
+    Contact Get(int id);
+    IEnumerable<Contact> Get();
     Contact Add(Contact contact);
     Contact Update(Contact contactChanges);
     Contact Delete(int id);

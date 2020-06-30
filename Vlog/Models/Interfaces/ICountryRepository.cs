@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface ICountryRepository
   {
-    Country GetCountry(int id);
-    IEnumerable<Country> GetCountries();
+    Country Get(int id);
+    IEnumerable<Country> Get();
     Country Add(Country country);
     Country Update(Country countryChanges);
     Country Delete(int id);

@@ -37,12 +37,12 @@ namespace Vlog.Models.Repositories
       return logisticOtherServiceFare;
     }
 
-    public LogisticOtherServiceFare GetLogisticOtherServiceFare(int id)
+    public LogisticOtherServiceFare Get(int id)
     {
       return _context.LogisticOtherServiceFareItems.Find(id);
     }
 
-    public IEnumerable<LogisticOtherServiceFare> GetLogisticOtherServiceFares()
+    public IEnumerable<LogisticOtherServiceFare> Get()
     {
       return _context.LogisticOtherServiceFareItems;
     }

@@ -22,7 +22,7 @@ namespace Vlog.Models
     public DbSet<Address> AddressItems { get; set; }
     public DbSet<Country> CountryItems { get; set; }
     public DbSet<LogisticFareIdentity> LogisticFareIdentityItems { get; set; }
-    public DbSet<LogisticFareNominal> LogisticFareNominalItems { get; set; }
+    public DbSet<LogisticServiceFare> LogisticServiceFarelItems { get; set; }
     public DbSet<LogisticOtherService> LogisticOtherServiceItems { get; set; }
     public DbSet<LogisticOtherServiceFare> LogisticOtherServiceFareItems { get; set; }
     public DbSet<LogisticPacket> LogisticPacketItems { get; set; }
@@ -31,5 +31,7 @@ namespace Vlog.Models
     public DbSet<Regency> RegencyItems { get; set; }
     public DbSet<Rural> RuralItems { get; set; }
     public DbSet<UserRole> UserRoleItems { get; set; }
+    public DbSet<RajaOngkirCity> RajaOngkirCityItems { get; set; }
+    public DbSet<RajaOngkirProvince> RajaOngkirProvinceItems { get; set; }
   }
 }

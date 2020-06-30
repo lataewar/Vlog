@@ -9,8 +9,8 @@ namespace Vlog.Models.Types
   {
     public int Id { get; set; }
     public int ROCityId { get; set; }
-    public int ROProvinceId { get; set; }
-    public string Name { get; set; }
-    public int PostalCode { get; set; }
+    public Regency Regency { get; set; }
+    public string PostalCode { get; set; }
+    public string Type { get; set; }
   }
 }

@@ -7,8 +7,8 @@ namespace Vlog.Models
 {
   public interface IUserRepository
   {
-    User GetUser(int id);
-    IEnumerable<User> GetUsers();
+    User Get(int id);
+    IEnumerable<User> Get();
     User Add(User user);
     User Update(User userChanges);
     User Delete(int id);

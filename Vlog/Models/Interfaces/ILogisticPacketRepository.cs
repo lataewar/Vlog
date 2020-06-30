@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface ILogisticPacketRepository
   {
-    LogisticPacket GetLogisticPacket(int id);
-    IEnumerable<LogisticPacket> GetLogisticPackets();
+    LogisticPacket Get(int id);
+    IEnumerable<LogisticPacket> Get();
     LogisticPacket Add(LogisticPacket logisticPacket);
     LogisticPacket Update(LogisticPacket logisticPacketChanges);
     LogisticPacket Delete(int id);

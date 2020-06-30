@@ -13,12 +13,12 @@ namespace Vlog.Models.Types
     public decimal CurrentNominal { get; set; }
     public string AirWayBill { get; set; }
 
-    public int AddressFromId { get; set; }
-    // public Address AddressFrom { get; set; }
-    public int AddressToId { get; set; }
-    // public Address AddressTo { get; set; }
+    // public int AddressFromId { get; set; }
+    public Address AddressFrom { get; set; }
+    // public int AddressToId { get; set; }
+    public Address AddressTo { get; set; }
 
-    public int LogisticServiceId { get; set; }
-    // public LogisticService LogisticService { get; set; }
+    // public int LogisticServiceId { get; set; }
+    public LogisticService LogisticService { get; set; }
   }
 }

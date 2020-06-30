@@ -36,12 +36,12 @@ namespace Vlog.Models.Repositories
       return regency;
     }
 
-    public IEnumerable<Regency> GetRegencies()
+    public IEnumerable<Regency> Get()
     {
       return _context.RegencyItems;
     }
 
-    public Regency GetRegency(int id)
+    public Regency Get(int id)
     {
       return _context.RegencyItems.Find(id);
     }
@@ -52,6 +52,11 @@ namespace Vlog.Models.Repositories
       _context.SaveChanges();
 
       return regencyChanges;
+    }
+
+    public Regency GetByROCityName(Province province, string cityName)
+    {
+      return _context.RegencyItems.Where( a => a.Name == cityName && a.Province.Id == province.Id ).FirstOrDefault();
     }
   }
 }

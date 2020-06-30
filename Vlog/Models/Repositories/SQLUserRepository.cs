@@ -34,12 +34,12 @@ namespace Vlog.Models.Repositories
       return user;
     }
 
-    public User GetUser(int id)
+    public User Get(int id)
     {
       return _context.UserItems.Find(id);
     }
 
-    public IEnumerable<User> GetUsers()
+    public IEnumerable<User> Get()
     {
       return _context.UserItems;
     }

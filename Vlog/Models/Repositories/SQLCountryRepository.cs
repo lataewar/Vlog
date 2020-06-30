@@ -36,12 +36,12 @@ namespace Vlog.Models.Repositories
       return country;
     }
 
-    public IEnumerable<Country> GetCountries()
+    public IEnumerable<Country> Get()
     {
       return _context.CountryItems;
     }
 
-    public Country GetCountry(int id)
+    public Country Get(int id)
     {
       return _context.CountryItems.Find(id);
     }

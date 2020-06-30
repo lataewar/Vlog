@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface ILogisticOtherServiceRepository
   {
-    LogisticOtherService GetLogisticOtherService(int id);
-    IEnumerable<LogisticOtherService> GetLogisticOtherServices();
+    LogisticOtherService Get(int id);
+    IEnumerable<LogisticOtherService> Get();
     LogisticOtherService Add(LogisticOtherService logisticOtherService);
     LogisticOtherService Update(LogisticOtherService logisticOtherServiceChanges);
     LogisticOtherService Delete(int id);

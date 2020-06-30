@@ -36,12 +36,12 @@ namespace Vlog.Models.Repositories
       return logisticFareIdentity;
     }
 
-    public IEnumerable<LogisticFareIdentity> GetLogisticFareIdentities()
+    public IEnumerable<LogisticFareIdentity> Get()
     {
       return _context.LogisticFareIdentityItems;
     }
 
-    public LogisticFareIdentity GetLogisticFareIdentity(int id)
+    public LogisticFareIdentity Get(int id)
     {
       return _context.LogisticFareIdentityItems.Find(id);
     }

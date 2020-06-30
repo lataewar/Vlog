@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface IRegencyRepository
   {
-    Regency GetRegency(int id);
-    IEnumerable<Regency> GetRegencies();
+    Regency Get(int id);
+    IEnumerable<Regency> Get();
     Regency Add(Regency regency);
     Regency Update(Regency regencyChanges);
     Regency Delete(int id);

@@ -38,12 +38,12 @@ namespace Vlog.Models.Repositories
       return province;
     }
 
-    public Province GetProvince(int id)
+    public Province Get(int id)
     {
       return _context.ProvinceItems.Find(id);
     }
 
-    public IEnumerable<Province> GetProvinces()
+    public IEnumerable<Province> Get()
     {
       return _context.ProvinceItems;
     }
@@ -54,6 +54,11 @@ namespace Vlog.Models.Repositories
       _context.SaveChanges();
 
       return provinceChanges;
+    }
+
+    public Province GetByROProvinceName(string provinceName)
+    {
+      return _context.ProvinceItems.Where(a => a.Name == provinceName).FirstOrDefault();
     }
   }
 }

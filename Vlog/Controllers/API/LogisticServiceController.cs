@@ -26,7 +26,7 @@ namespace Vlog.Controllers.API
     [HttpGet]
     public ActionResult<IEnumerable<LogisticService>> Get()
     {
-      return _logisticServiceRepo.GetLogisticServices().ToList();
+      return _logisticServiceRepo.Get().ToList();
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ namespace Vlog.Controllers.API
     [HttpGet("{id}")]
     public ActionResult<LogisticService> Get(int id)
     {
-      return _logisticServiceRepo.GetLogisticService(id);
+      return _logisticServiceRepo.Get(id);
     }
     
     /// <summary>
@@ -63,7 +63,7 @@ namespace Vlog.Controllers.API
       if (id != logisticService.Id)
         return BadRequest();
 
-      var logisticServiceItem = _logisticServiceRepo.GetLogisticService(id);
+      var logisticServiceItem = _logisticServiceRepo.Get(id);
 
       if (logisticServiceItem == null)
         return NotFound();
@@ -79,7 +79,7 @@ namespace Vlog.Controllers.API
     [HttpDelete("{id}")]
     public ActionResult<LogisticService> Delete(int id)
     {
-      var logisticServiceItem = _logisticServiceRepo.GetLogisticService(id);
+      var logisticServiceItem = _logisticServiceRepo.Get(id);
 
       if (logisticServiceItem == null)
         return NotFound();

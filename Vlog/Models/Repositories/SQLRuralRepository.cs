@@ -36,12 +36,12 @@ namespace Vlog.Models.Repositories
       return rural;
     }
 
-    public Rural GetRural(int id)
+    public Rural Get(int id)
     {
       return _context.RuralItems.Find(id);
     }
 
-    public IEnumerable<Rural> GetRurals()
+    public IEnumerable<Rural> Get()
     {
       return _context.RuralItems;
     }

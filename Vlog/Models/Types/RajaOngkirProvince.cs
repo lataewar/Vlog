@@ -9,6 +9,6 @@ namespace Vlog.Models.Types
   {
     public int Id { get; set; }
     public int ROProvinceId { get; set; }
-    public string Name { get; set; }
+    public Province Province { get; set; }
   }
 }

@@ -38,12 +38,12 @@ namespace Vlog.Models.Repositories
       return address;
     }
 
-    public Address GetAddress(int id)
+    public Address Get(int id)
     {
       return _context.AddressItems.Find(id);
     }
 
-    public IEnumerable<Address> GetAddresses()
+    public IEnumerable<Address> Get()
     {
       return _context.AddressItems;
     }

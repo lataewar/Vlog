@@ -8,8 +8,8 @@ namespace Vlog.Models.Interfaces
 {
   public interface IRuralRepository
   {
-    Rural GetRural(int id);
-    IEnumerable<Rural> GetRurals();
+    Rural Get(int id);
+    IEnumerable<Rural> Get();
     Rural Add(Rural rural);
     Rural Update(Rural ruralChanges);
     Rural Delete(int id);

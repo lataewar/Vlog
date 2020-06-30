@@ -7,8 +7,8 @@ namespace Vlog.Models
 {
   public interface ICompanyRepository
   {
-    Company GetCompany(int id);
-    IEnumerable<Company> GetCompanies();
+    Company Get(int id);
+    IEnumerable<Company> Get();
     Company Add(Company company);
     Company Update(Company companyChanges);
     Company Delete(int id);
