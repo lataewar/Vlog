@@ -12,15 +12,22 @@ namespace Vlog.Models
     private string BaseUrl { get; set; }
     private string ApiKey { get; set; }
     private string Mode { get; set; }
+    public string DefaultCourier { get; private set; }
+    public string DefaultService { get; private set; }
     public RajaOngkirClient(IConfiguration configuration)
     {
       ApiKey = configuration["RajaOngkir:ApiKey"];
       BaseUrl = configuration["RajaOngkir:Url"];
       Mode = configuration["RajaOngkir:Mode"];
+      DefaultCourier = configuration["RajaOngkir:DefaultCourier"];
+      DefaultService = configuration["RajaOngkir:DefaultService"];
     }
 
-    public JObject GetPrice(string originId, string destinationId, int weight, string courier)
+    public JObject GetPrice(string originId, string destinationId, int weight, string courier = null)
     {
+      if (courier == null)
+        courier = DefaultCourier;
+
       var httpWebRequest = (HttpWebRequest)WebRequest.Create($"{BaseUrl}/{Mode}/cost");
       httpWebRequest.Method = "POST";
       httpWebRequest.Headers.Add("key", ApiKey);

@@ -13,5 +13,6 @@ namespace Vlog.Models.Interfaces
     RajaOngkirCity Add(RajaOngkirCity rajaOngkirCity);
     RajaOngkirCity Update(RajaOngkirCity rajaOngkirCityChanges);
     RajaOngkirCity Delete(int id);
+    public RajaOngkirCity GetByROCityId(int roCityId);
   }
 }

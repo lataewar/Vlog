@@ -35,7 +35,15 @@
             }
 
             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp ' + rupiah : '');
+        }
+
+        function clearOption(selectEl) {
+            var length = selectEl.options.length;
+
+            for (i = length - 1; i >= 1; i--) {
+                selectEl.options[i] = null;
+            }
         }
 
         function createOptionEl(parentEl, value, text) {
@@ -48,6 +56,7 @@
 
         function createServiceOptionElement(parentEl, data) {
             data.sort(sortByProperty("name"))
+            clearOption(parentEl)
 
             for (i = 0; i < data.length; i++) {
                 createOptionEl(parentEl, data[i].id, data[i].name)
@@ -56,6 +65,7 @@
 
         function createProvinceElement(parentEl, data) {
             data.sort(sortByProperty("name"))
+            clearOption(parentEl)
 
             for (i = 0; i < data.length; i++) {
                 createOptionEl(parentEl, data[i].id, data[i].name)
@@ -64,6 +74,7 @@
 
         function createRegencyElement(parentEl, data) {
             data.sort(sortByProperty("name"))
+            clearOption(parentEl)
 
             for (i = 0; i < data.length; i++) {
                 createOptionEl(parentEl, data[i].id, data[i].name)

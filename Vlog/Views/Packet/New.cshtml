@@ -71,14 +71,14 @@
                                     </div>
                                 </div>
                                 <!--
-    <div class="form-group row">
-        <label for="select" class="col-4 col-form-label">Negara</label>
-        <div class="col-8">
-            <select id="country" name="country" class="custom-select">
-            </select>
+        <div class="form-group row">
+            <label for="select" class="col-4 col-form-label">Negara</label>
+            <div class="col-8">
+                <select id="country" name="country" class="custom-select">
+                </select>
+            </div>
         </div>
-    </div>
-        -->
+            -->
                                 <div class="form-group row">
                                     <label for="province_from" class="col-4 col-form-label">Provinsi</label>
                                     <div class="col-8">
@@ -129,15 +129,15 @@
                                     </div>
                                 </div>
                                 <!--
-    <div class="form-group row">
-        <label for="select" class="col-4 col-form-label">Negara</label>
-        <div class="col-8">
-            <select id="select" name="select" class="custom-select" disabled>
-                <option>Indonesia</option>
-            </select>
+        <div class="form-group row">
+            <label for="select" class="col-4 col-form-label">Negara</label>
+            <div class="col-8">
+                <select id="select" name="select" class="custom-select" disabled>
+                    <option>Indonesia</option>
+                </select>
+            </div>
         </div>
-    </div>
-        -->
+            -->
                                 <div class="form-group row">
                                     <label for="province_to" class="col-4 col-form-label">Provinsi</label>
                                     <div class="col-8">
@@ -174,26 +174,49 @@
                                     </div>
                                 </div>
                                 <!--
-    <h5>Pilih Layanan Tambahan</h5>
-    <div class="form-group row">
-        <label for="select" class="col-4 col-form-label">Daftar Layanan Tambahan</label>
-        <div class="col-8">
-            <select id="other_service" name="other_service" class="custom-select">
-                <option value="admin">Bingkai kayu</option>
-                <option value="admin">Bubble Wrap</option>
-                <option value="admin">Fragile Treatment</option>
-            </select>
+        <h5>Pilih Layanan Tambahan</h5>
+        <div class="form-group row">
+            <label for="select" class="col-4 col-form-label">Daftar Layanan Tambahan</label>
+            <div class="col-8">
+                <select id="other_service" name="other_service" class="custom-select">
+                    <option value="admin">Bingkai kayu</option>
+                    <option value="admin">Bubble Wrap</option>
+                    <option value="admin">Fragile Treatment</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
-            <button name="submit" type="submit" class="btn btn-light">Kembali</button>
-            <button name="submit" type="submit" class="btn btn-light">Batal</button>
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+                <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
+                <button name="submit" type="submit" class="btn btn-light">Kembali</button>
+                <button name="submit" type="submit" class="btn btn-light">Batal</button>
+            </div>
         </div>
-    </div>
-        -->
+            -->
                             </form>
+                            <h5>Summary</h5>
+                            <div class="table-responsive" id="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase small font-weight-bold">Layanan</th>
+                                            <th class="text-uppercase small font-weight-bold">Origin</th>
+                                            <th class="text-uppercase small font-weight-bold">Destinasi</th>
+                                            <th class="text-uppercase small font-weight-bold">Berat</th>
+                                            <th class="text-uppercase small font-weight-bold">Ongkir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td id="service_name_col"></td>
+                                            <td id="origin_col"></td>
+                                            <td id="destination_col"></td>
+                                            <td id="weight_col"></td>
+                                            <td id="cost_col"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -234,11 +257,32 @@
         regencyToEl.selectedIndex = 0
         districtToEl.value = ""
         telpToEl.value = ""
+        document.getElementById("service_name_col").innerText = ""
+        document.getElementById("service_name_col").innerText = ""
+        document.getElementById("destination_col").innerText = ""
+        document.getElementById("origin_col").innerText = ""
+        document.getElementById("weight_col").innerText = ""
+        document.getElementById("cost_col").innerText = ""
     }
 
     url_logistic_service = "/api/logisticservice"
     url_province = "/api/province"
     url_regency = "/api/regency/getbyprovince"
+
+    unitEl.onblur = function () {
+        if (parseFloat(regencyFromEl.value) > 0 && parseFloat(regencyToEl.value) > 0 && parseFloat(unitEl.value) > 0 && parseFloat(logisticServiceEl.value) > 0)
+            checkOngkir()
+    }
+
+    regencyFromEl.onchange = function () {
+        if (parseFloat(regencyFromEl.value) > 0 && parseFloat(regencyToEl.value) > 0 && parseFloat(unitEl.value) > 0 && parseFloat(logisticServiceEl.value) > 0)
+            checkOngkir()
+    }
+
+    regencyToEl.onchange = function () {
+        if (parseFloat(regencyFromEl.value) > 0 && parseFloat(regencyToEl.value) > 0 && parseFloat(unitEl.value) > 0 && parseFloat(logisticServiceEl.value) > 0)
+            checkOngkir()
+    }
 
     provinceFromEl.onchange = function () {
         value = provinceFromEl.value
@@ -246,6 +290,7 @@
         if (value !== "") {
             getRegencyByProvinceId(regencyFromEl, value)
         }
+        
     }
 
     provinceToEl.onchange = function () {
@@ -281,6 +326,26 @@
     }
 
     url_packet = "/api/logisticpacket"
+    url_logistic_cost = `/api/logisticcost`
+
+    function checkOngkir() {
+        $.ajax(`${url_logistic_cost}/logisticServiceId/${logisticServiceEl.value}/regencyFromId/${regencyFromEl.value}/regencyToId/${regencyToEl.value}/weight/${parseFloat(unitEl.value)}`)
+            .done(function (msg) {
+                console.log(msg)
+                updateTableSummary(msg)
+            })
+            .fail(function () {
+                alert("error");
+            })
+    }
+
+    function updateTableSummary(data) {
+        document.getElementById("service_name_col").innerText = logisticServiceEl.options[logisticServiceEl.selectedIndex].text
+        document.getElementById("destination_col").innerText = regencyToEl.options[regencyToEl.selectedIndex].text
+        document.getElementById("origin_col").innerText = regencyFromEl.options[regencyFromEl.selectedIndex].text
+        document.getElementById("weight_col").innerText = data.weight + " gr"
+        document.getElementById("cost_col").innerText = formatRupiah( data.cost )
+    }
 
     document.getElementById("submitBtn").onclick = function () {
         var jsonData = JSON.stringify({

@@ -30,6 +30,7 @@ namespace Vlog
 
       services.AddControllersWithViews();
 
+      services.AddScoped<ILogisticCost, LogisticCost>();
       services.AddScoped<IAddressRepository, SQLAddressRepository>();
       services.AddScoped<ICompanyRepository, SQLCompanyRepository>();
       services.AddScoped<IContactRepository, SQLContactRepository>();
