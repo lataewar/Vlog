@@ -65,17 +65,17 @@ namespace Vlog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RegencyId")
+                    b.Property<int>("RegencyId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Rural")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Specific")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -97,6 +97,26 @@ namespace Vlog.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CountryItems");
+                });
+
+            modelBuilder.Entity("Vlog.Models.Types.District", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegencyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegencyId");
+
+                    b.ToTable("DistrictItems");
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.LogisticFareIdentity", b =>
@@ -174,7 +194,7 @@ namespace Vlog.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LogisticServiceId")
+                    b.Property<int>("LogisticServiceId")
                         .HasColumnType("int");
 
                     b.Property<string>("NameFrom")
@@ -183,7 +203,10 @@ namespace Vlog.Migrations
                     b.Property<string>("NameTo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<string>("PhoneNumberFrom")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumberTo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UnitNumber")
@@ -228,7 +251,7 @@ namespace Vlog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("LogisticServiceId")
+                    b.Property<int>("LogisticServiceId")
                         .HasColumnType("int");
 
                     b.Property<int>("LogisticUnit")
@@ -267,7 +290,7 @@ namespace Vlog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CountryId")
+                    b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -293,7 +316,7 @@ namespace Vlog.Migrations
                     b.Property<int>("ROCityId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RegencyId")
+                    b.Property<int>("RegencyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -313,7 +336,7 @@ namespace Vlog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProvinceId")
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.Property<int>("ROProvinceId")
@@ -336,7 +359,7 @@ namespace Vlog.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProvinceId")
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -346,32 +369,12 @@ namespace Vlog.Migrations
                     b.ToTable("RegencyItems");
                 });
 
-            modelBuilder.Entity("Vlog.Models.Types.Rural", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RegencyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RegencyId");
-
-                    b.ToTable("RuralItems");
-                });
-
             modelBuilder.Entity("Vlog.Models.Types.UserRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -415,7 +418,18 @@ namespace Vlog.Migrations
                 {
                     b.HasOne("Vlog.Models.Types.Regency", "Regency")
                         .WithMany()
-                        .HasForeignKey("RegencyId");
+                        .HasForeignKey("RegencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Vlog.Models.Types.District", b =>
+                {
+                    b.HasOne("Vlog.Models.Types.Regency", "Regency")
+                        .WithMany()
+                        .HasForeignKey("RegencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.LogisticOtherServiceFare", b =>
@@ -437,14 +451,18 @@ namespace Vlog.Migrations
 
                     b.HasOne("Vlog.Models.Types.LogisticService", "LogisticService")
                         .WithMany()
-                        .HasForeignKey("LogisticServiceId");
+                        .HasForeignKey("LogisticServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.LogisticServiceFare", b =>
                 {
                     b.HasOne("Vlog.Models.Types.LogisticService", "LogisticService")
                         .WithMany()
-                        .HasForeignKey("LogisticServiceId");
+                        .HasForeignKey("LogisticServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Vlog.Models.Types.Regency", "RegencyFrom")
                         .WithMany()
@@ -459,42 +477,45 @@ namespace Vlog.Migrations
                 {
                     b.HasOne("Vlog.Models.Types.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.RajaOngkirCity", b =>
                 {
                     b.HasOne("Vlog.Models.Types.Regency", "Regency")
                         .WithMany()
-                        .HasForeignKey("RegencyId");
+                        .HasForeignKey("RegencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.RajaOngkirProvince", b =>
                 {
                     b.HasOne("Vlog.Models.Types.Province", "Province")
                         .WithMany()
-                        .HasForeignKey("ProvinceId");
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.Regency", b =>
                 {
                     b.HasOne("Vlog.Models.Types.Province", "Province")
                         .WithMany()
-                        .HasForeignKey("ProvinceId");
-                });
-
-            modelBuilder.Entity("Vlog.Models.Types.Rural", b =>
-                {
-                    b.HasOne("Vlog.Models.Types.Regency", "Regency")
-                        .WithMany()
-                        .HasForeignKey("RegencyId");
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vlog.Models.Types.UserRole", b =>
                 {
                     b.HasOne("Vlog.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

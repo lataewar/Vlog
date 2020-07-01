@@ -3,7 +3,7 @@
   public class LogisticServiceFare
   {
     public int Id { get; set; }
-    // public int LogisticServiceId { get; set; }
+    public int LogisticServiceId { get; set; }
     public LogisticService LogisticService { get; set; }
     public LogisticUnitEnum LogisticUnit { get; set; }
     public decimal Nominal { get; set; }

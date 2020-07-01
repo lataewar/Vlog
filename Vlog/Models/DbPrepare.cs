@@ -23,7 +23,7 @@ namespace Vlog.Models
     public static void SeedData(VlogDBContext context)
     {
       context.Database.Migrate();
-      // SeedDataFromRajaOngkir(context);
+      SeedDataFromRajaOngkir(context);
       System.Console.WriteLine("Database created");
     }
 

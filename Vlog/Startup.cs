@@ -42,7 +42,7 @@ namespace Vlog
       services.AddScoped<ILogisticServiceRepository, SQLLogisticServiceRepository>();
       services.AddScoped<IProvinceRepository, SQLProvinceRepository>();
       services.AddScoped<IRegencyRepository, SQLRegencyRepository>();
-      services.AddScoped<IRuralRepository, SQLRuralRepository>();
+      services.AddScoped<IDistrictRepository, SQLDisctrictRepository>();
       services.AddScoped<IUserRepository, SQLUserRepository>();
       services.AddScoped<IUserRoleRepository, SQLUserRoleRepository>();
       services.AddScoped<IRajaOngkirCityRepository, SQLRajaOngkirCityRepository>();

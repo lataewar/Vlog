@@ -28,7 +28,7 @@
                                 <div class="form-group row">
                                     <label for="unit_enum" class="col-4 col-form-label">Satuan Hitung</label>
                                     <div class="col-8">
-                                        <select id="unit_enum" name="unit_enum" class="custom-select">
+                                        <select id="unit_enum" name="unit_enum" class="custom-select" disabled>
                                             <option value="admin">Berat (gram)</option>
                                             <option value="admin">Dimensi (m2)</option>
                                             <option value="admin">Unit</option>
@@ -38,7 +38,7 @@
                                 <div class="form-group row">
                                     <label for="unit" class="col-4 col-form-label">Jumlah satuan</label>
                                     <div class="col-8">
-                                        <input id="unit" name="unit" placeholder="Unit" class="form-control here" required="required" type="text">
+                                        <input id="unit" name="unit" placeholder="0" class="form-control here" required="required" type="number">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -51,8 +51,9 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                        <button id="nextBtn" type="button" class="btn btn-primary">Lanjut</button>
+                                        <button id="backBtn" type="button" class="btn btn-light">Kembali</button>
+                                        <button id="cancelBtn" type="button" class="btn btn-light">Batal</button>
                                     </div>
                                 </div>
 
@@ -69,14 +70,15 @@
                                         <textarea id="address_from" name="address_from" cols="40" rows="4" class="form-control"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Negara</label>
-                                    <div class="col-8">
-                                        <select id="select" name="select" class="custom-select">
-                                            <option value="admin">Indonesia</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <!--
+    <div class="form-group row">
+        <label for="select" class="col-4 col-form-label">Negara</label>
+        <div class="col-8">
+            <select id="country" name="country" class="custom-select">
+            </select>
+        </div>
+    </div>
+        -->
                                 <div class="form-group row">
                                     <label for="province_from" class="col-4 col-form-label">Provinsi</label>
                                     <div class="col-8">
@@ -94,30 +96,28 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Kelurahan/Desa</label>
+                                    <label for="text" class="col-4 col-form-label">Kecamatan</label>
                                     <div class="col-8">
-                                        <select id="rural_from" name="rural_from" class="custom-select">
-                                            <option>--Pilih Kelurahan/Desa--</option>
-                                        </select>
+                                        <input id="district_from" name="district_from" placeholder="Kecamatan" class="form-control here" required="required" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">No Telp.</label>
+                                    <label for="telp_from" class="col-4 col-form-label">No Telp.</label>
                                     <div class="col-8">
-                                        <input id="contact_from" name="contact_from" placeholder="+62---" class="form-control here" required="required" type="text">
+                                        <input id="telp_from" name="telp_from" placeholder="08123---" class="form-control here" required="required" type="number">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                        <button id="nextBtn" type="button" class="btn btn-primary">Lanjut</button>
+                                        <button id="backBtn" type="button" class="btn btn-light">Kembali</button>
+                                        <button id="cancelBtn" type="button" class="btn btn-light">Batal</button>
                                     </div>
                                 </div>
 
                                 <h5>Tujuan</h5>
                                 <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">Nama Penerima</label>
+                                    <label for="name_to" class="col-4 col-form-label">Nama Penerima</label>
                                     <div class="col-8">
                                         <input id="name_to" name="name_to" placeholder="Nama penerima" class="form-control here" required="required" type="text">
                                     </div>
@@ -128,14 +128,16 @@
                                         <textarea id="address_to" name="address_to" cols="40" rows="4" class="form-control"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Negara</label>
-                                    <div class="col-8">
-                                        <select id="select" name="select" class="custom-select">
-                                            <option value="admin">Indonesia</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <!--
+    <div class="form-group row">
+        <label for="select" class="col-4 col-form-label">Negara</label>
+        <div class="col-8">
+            <select id="select" name="select" class="custom-select" disabled>
+                <option>Indonesia</option>
+            </select>
+        </div>
+    </div>
+        -->
                                 <div class="form-group row">
                                     <label for="province_to" class="col-4 col-form-label">Provinsi</label>
                                     <div class="col-8">
@@ -153,44 +155,44 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="text" class="col-4 col-form-label">Kelurahan/Desa</label>
+                                    <label for="text" class="col-4 col-form-label">Kecamatan</label>
                                     <div class="col-8">
-                                        <select id="rural_to" name="rural_to" class="custom-select">
-                                            <option>--Pilih Kelurahan/Desa--</option>
-                                        </select>
+                                        <input id="district_to" name="district_to" placeholder="Kecamatan" class="form-control here" required="required" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="email" class="col-4 col-form-label">No Telp.</label>
+                                    <label for="telp_to" class="col-4 col-form-label">No Telp.</label>
                                     <div class="col-8">
-                                        <input id="contact_to" name="contact_to" placeholder="+62---" class="form-control here" required="required" type="text">
+                                        <input id="telp_to" name="contact_to" placeholder="08123---" class="form-control here" required="required" type="number">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Lanjut</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
+                                        <button id="submitBtn" type="button" class="btn btn-primary">Selesai</button>
+                                        <button id="backBtn" type="button" class="btn btn-light">Kembali</button>
+                                        <button id="cancelBtn" type="button" class="btn btn-light">Batal</button>
                                     </div>
                                 </div>
-                                <h5>Pilih Layanan Tambahan</h5>
-                                <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Daftar Layanan Tambahan</label>
-                                    <div class="col-8">
-                                        <select id="other_service" name="other_service" class="custom-select">
-                                            <option value="admin">Bingkai kayu</option>
-                                            <option value="admin">Bubble Wrap</option>
-                                            <option value="admin">Fragile Treatment</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Kembali</button>
-                                        <button name="submit" type="submit" class="btn btn-light">Batal</button>
-                                    </div>
-                                </div>
+                                <!--
+    <h5>Pilih Layanan Tambahan</h5>
+    <div class="form-group row">
+        <label for="select" class="col-4 col-form-label">Daftar Layanan Tambahan</label>
+        <div class="col-8">
+            <select id="other_service" name="other_service" class="custom-select">
+                <option value="admin">Bingkai kayu</option>
+                <option value="admin">Bubble Wrap</option>
+                <option value="admin">Fragile Treatment</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Selesai</button>
+            <button name="submit" type="submit" class="btn btn-light">Kembali</button>
+            <button name="submit" type="submit" class="btn btn-light">Batal</button>
+        </div>
+    </div>
+        -->
                             </form>
                         </div>
                     </div>
@@ -200,3 +202,125 @@
         </div>
     </div>
 </div>
+
+<script>
+    unitEl = document.getElementById("unit")
+    logisticServiceEl = document.getElementById("logistic_service")
+    nameFromEl = document.getElementById("name_from")
+    addressFromEl = document.getElementById("address_from")
+    provinceFromEl = document.getElementById("province_from")
+    regencyFromEl = document.getElementById("regency_from")
+    districtFromEl = document.getElementById("district_from")
+    telpFromEl = document.getElementById("telp_from")
+    nameToEl = document.getElementById("name_to")
+    addressToEl = document.getElementById("address_to")
+    provinceToEl = document.getElementById("province_to")
+    regencyToEl = document.getElementById("regency_to")
+    districtToEl = document.getElementById("district_to")
+    telpToEl = document.getElementById("telp_to")
+
+    function clearForm() {
+        unitEl.value = 0
+        logisticServiceEl.selectedIndex = 0
+        nameFromEl.value = ""
+        addressFromEl.value = ""
+        provinceFromEl.selectedIndex = 0
+        regencyFromEl.selectedIndex = 0
+        districtFromEl.value = ""
+        telpFromEl.value = ""
+        nameToEl.value = ""
+        addressToEl.value = ""
+        provinceToEl.selectedIndex = 0
+        regencyToEl.selectedIndex = 0
+        districtToEl.value = ""
+        telpToEl.value = ""
+    }
+
+    url_logistic_service = "/api/logisticservice"
+    url_province = "/api/province"
+    url_regency = "/api/regency/getbyprovince"
+
+    provinceFromEl.onchange = function () {
+        value = provinceFromEl.value
+
+        if (value !== "") {
+            getRegencyByProvinceId(regencyFromEl, value)
+        }
+    }
+
+    provinceToEl.onchange = function () {
+        value = provinceToEl.value
+
+        if (value !== "") {
+            getRegencyByProvinceId(regencyToEl, value)
+        }
+    }
+
+    $.ajax(url_logistic_service)
+        .done(function (msg) {
+            console.log(msg)
+            createServiceOptionElement(logisticServiceEl, msg)
+        })
+        .fail(function () {
+            alert("error");
+        })
+
+    $.ajax(url_province)
+        .done(function (msg) {
+            console.log(msg)
+            createProvinceElement(provinceFromEl, msg)
+            createProvinceElement(provinceToEl, msg)
+        })
+        .fail(function () {
+            alert("error");
+        })
+
+    document.getElementById("cancelBtn").onclick = function () {
+        clearForm();
+        window.location.href = `/packet`
+    }
+
+    url_packet = "/api/logisticpacket"
+
+    document.getElementById("submitBtn").onclick = function () {
+        var jsonData = JSON.stringify({
+            "nameFrom": nameFromEl.value,
+            "nameTo": nameToEl.value,
+            "phoneNumberFrom": telpFromEl.value,
+            "phoneNumberTo": telpToEl.value,
+            "unitNumber": parseFloat(unitEl.value),
+            "dateCreated": "2020-07-01T00:00:00",
+            "currentNominal": 0,
+            "airwayBill": "",
+            "addressFrom":
+            {
+                "postalCode": "",
+                "detail": addressFromEl.value,
+                "district": districtFromEl.value,
+                "regencyId": parseFloat(regencyFromEl.value),
+            },
+            "addressTo":
+            {
+                "postalCode": "",
+                "detail": addressToEl.value,
+                "district": districtToEl.value,
+                "regencyId": parseFloat(regencyToEl.value),
+            },
+            "logisticServiceId": parseFloat(logisticServiceEl.value),
+        });
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: url_packet,
+            data: jsonData,
+            success: function (data) {
+                alert("success");
+                clearForm();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    };
+</script>

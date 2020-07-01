@@ -7,6 +7,7 @@ namespace Vlog.Models
   {
     public VlogDBContext(DbContextOptions<VlogDBContext> options) : base(options)
     {
+      this.ChangeTracker.LazyLoadingEnabled = false;
     }
 
     /*protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,7 +30,7 @@ namespace Vlog.Models
     public DbSet<LogisticService> LogisticServiceItems { get; set; }
     public DbSet<Province> ProvinceItems { get; set; }
     public DbSet<Regency> RegencyItems { get; set; }
-    public DbSet<Rural> RuralItems { get; set; }
+    public DbSet<District> DistrictItems { get; set; }
     public DbSet<UserRole> UserRoleItems { get; set; }
     public DbSet<RajaOngkirCity> RajaOngkirCityItems { get; set; }
     public DbSet<RajaOngkirProvince> RajaOngkirProvinceItems { get; set; }
